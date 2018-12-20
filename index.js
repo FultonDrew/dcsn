@@ -416,6 +416,7 @@ function initialize() {
                                             directions.style.backgroundColor = '#04C3D9';
                                             directions.style.margin = "10px auto";
                                             directions.style.border = "1px solid";
+                                            directions.style.padding = "8px";
                                             directions.style.borderRadius = "5px";
                                             directions.style.textAlign = "center";
                                             directions.style.fontSize = '1.3em';
