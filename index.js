@@ -211,6 +211,11 @@ function initialize() {
                                     like.style.backgroundColor = "rgba(2,173,83,0.7)";
                                     like.style.backgroundRepeat = "no-repeat";
                                     like.style.backgroundPosition = "center";
+                                    if (window.matchMedia("(max-width: 575px)").matches) {
+                                        like.style.width = "12vw"
+                                    } else {
+                                        like.style.width = "7vw"
+                                    };
                                 var dislike = document.getElementById('dislike');
                                     dislike.style.width = "7vw";
                                     dislike.style.height = "9vh";
@@ -228,6 +233,11 @@ function initialize() {
                                     dislike.style.backgroundColor = "rgba(117,11,13,0.7)";
                                     dislike.style.backgroundRepeat = "no-repeat";
                                     dislike.style.backgroundPosition = "center";
+                                    if (window.matchMedia("(max-width: 575px)").matches) {
+                                        dislike.style.width = "12vw"
+                                    } else {
+                                        dislike.style.width = "7vw"
+                                    };
                                 //closes create
 
                                 }
@@ -416,12 +426,13 @@ function initialize() {
                                             directions.style.backgroundColor = '#04C3D9';
                                             directions.style.margin = "10px auto";
                                             directions.style.border = "1px solid";
-                                            directions.style.padding = "8px";
+                                            directions.style.padding = "15px";
                                             directions.style.borderRadius = "5px";
                                             directions.style.textAlign = "center";
                                             directions.style.fontSize = '1.3em';
                                             directions.style.fontFamily = "'Lato', sans-serif";
-                                            directions.innerHTML = '<a href="https://www.google.com/maps/dir/?api=1&origin='+lat+","+long+"&destination="+interestedPlaces[i].geometry.viewport.ma.j+","+interestedPlaces[i].geometry.viewport.fa.j+"&destination_place_id="+interestedPlaces[i].place_id+'">Get Directions</a>';
+                                            directions.innerHTML = "Get Directions";
+                                            directions.href='"https://www.google.com/maps/dir/?api=1&origin='+lat+","+long+"&destination="+interestedPlaces[i].geometry.viewport.ma.j+","+interestedPlaces[i].geometry.viewport.fa.j+"&destination_place_id="+interestedPlaces[i].place_id+'"';
                                             directions.style.textDecoration = 'none';
                                             card.appendChild(directions);
                                             if (window.matchMedia("(max-width: 575px)").matches) {
@@ -489,30 +500,36 @@ function initialize() {
 
 
 
-  function liked(){
+   function liked(){
+    console.log("current status " + card.className)
     if (card.className == 'default'){
         card.className = 'but-yay'
-        console.log(card.className)
-    }else if (card.className == 'but-nope'){
+        setTimeout(function(){
+            card.className = 'default' 
+        }, 500)
+    } else if (card.className == 'but-nope'){
         card.className = 'but-yay'
-        console.log(card.className)
+        setTimeout(function(){
+            card.className = 'default' 
+        }, 500)
     } else {
         card.className = 'but-yay'
         console.log(card.className)
     }
-    
+
   }
 
   function disliked(){
-    if (card.className = 'default'){
+    if (card.className == 'default'){
         card.className = 'but-nope';
-        console.log(card.className)
+        setTimeout(function(){
+            card.className = 'default' 
+        }, 500)
     }else {
         card.className = 'default'
     }
     
   }
-
 
 
 
