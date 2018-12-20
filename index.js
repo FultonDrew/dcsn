@@ -420,7 +420,7 @@ function initialize() {
                                             directions.style.textAlign = "center";
                                             directions.style.fontSize = '1.3em';
                                             directions.style.fontFamily = "'Lato', sans-serif";
-                                            directions.innerHTML = '<a style="text-decorations:none, color:inherit, href="https://www.google.com/maps/dir/?api=1&origin='+lat+","+long+"&destination="+interestedPlaces[i].geometry.viewport.ma.j+","+interestedPlaces[i].geometry.viewport.fa.j+"&destination_place_id="+interestedPlaces[i].place_id+'">Get Directions</a>';
+                                            directions.innerHTML = '<a href="https://www.google.com/maps/dir/?api=1&origin='+lat+","+long+"&destination="+interestedPlaces[i].geometry.viewport.ma.j+","+interestedPlaces[i].geometry.viewport.fa.j+"&destination_place_id="+interestedPlaces[i].place_id+'">Get Directions</a>';
                                             directions.style.textDecoration = 'none';
                                             card.appendChild(directions);
                                             if (window.matchMedia("(max-width: 575px)").matches) {
