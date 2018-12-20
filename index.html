@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Decision</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lobster|Playfair+Display" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,700i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
+	<link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiU_vpNHwXz4n9hyB9wNnMf3azejGjzZikznxcrIQl8Blt6cZ-ow" type="image/png">
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+	<div class='logo' id='logo'>.dcsn</div>
+	<div id='sub'>Deciding on a place to go? Let us help!</div>
+	
+	
+
+<div class='one' id='one'>
+
+	<form class='search'>
+    <input type="text" id="search_location" class="form-control" placeholder="Where are you?">
+<!--     <div class="input-group-btn">
+        <button class="btn btn-default get_map" type="submit">
+            Locate
+        </button>
+    </div> -->
+	</form>
+</div>
+<div id='directions-btn'></div>
+<div id='directions'><div id='close'></div>
+	Think Tinder, but for restaurants. <br><br>Simply enter your location above and select from the drop-down menu. We'll show you a curated list of the top 20 places, one by one, for you to narrow down. Hit the like button if you're interested, or the dislike button if you're not into it. Once you've reviewed the options, we'll compile a list of each option that you're interested in to easily compare against one-another to make a final decision. Have fun!</div>
+
+
+<div class='two' id='two'>
+	<div id='cards'>
+	<div class='default' id='card'>
+		<div id='picture'></div>
+		<div id='name'></div>
+		<div id='rating'></div><hr id='line'>
+		<div id='price'></div><hr id='line'>
+		<div id='address'></div>
+		<div id='like-container'>
+			<div id='dislike' class='dislike'  onclick="disliked()"></div>
+			<div id='like' class='like' onclick="liked()"></div>
+		</div>
+		<div id='like-container'>
+			<div id='skip'>Skip ahead to your results >></div>
+		</div>
+
+	</div>
+</div>
+</div>
+
+
+
+
+<!-- display selected location information -->
+<div class='locationDetails'>
+<h4>Location Details</h4>
+<p>Address: <input type="text" class="search_addr" size="45"></p>
+<p>Latitude: <input type="text" class="search_latitude" size="30"></p>
+<p>Longitude: <input type="text" class="search_longitude" size="30"></p>
+</div>
+
+
+<div id='three'>
+<!-- display google map -->
+<div id="geomap"></div>
+<div id='interestedPlaces'>
+	<div id='favorites'>Your favorites</div>
+</div>
+</div>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDe9uhsXwvwMIFQPeblTTd9wJ5saGuppEk&libraries=places&callback=initialize" async defer></script>
+<script type="text/javascript" src='index.js' async defer></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDe9uhsXwvwMIFQPeblTTd9wJ5saGuppEk&libraries=places&callback=initMap" async defer></script> -->
+
+</body>
+</html>
