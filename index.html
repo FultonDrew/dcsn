@@ -22,11 +22,6 @@
 
 	<form class='search'>
     <input type="text" id="search_location" class="form-control" placeholder="Where are you?">
-<!--     <div class="input-group-btn">
-        <button class="btn btn-default get_map" type="submit">
-            Locate
-        </button>
-    </div> -->
 	</form>
 </div>
 <div id='directions-btn'></div>
@@ -36,28 +31,28 @@
 
 <div class='two' id='two'>
 	<div id='cards'>
-	<div class='default' id='card'>
-		<div id='picture'></div>
-		<div id='name'></div>
-		<div id='rating'></div><hr id='line'>
-		<div id='price'></div><hr id='line'>
-		<div id='address'></div>
-		<div id='like-container'>
-			<div id='dislike' class='dislike'  onclick="disliked()"></div>
-			<div id='like' class='like' onclick="liked()"></div>
-		</div>
-		<div id='like-container'>
-			<div id='skip'>Skip ahead to your results >></div>
-		</div>
+		<div class='default' id='card'>
+			<div id='picture'></div>
+			<div id='name'></div>
+			<div id='rating'></div><hr id='line'>
+			<div id='price'></div><hr id='line'>
+			<div id='address'></div>
+			<div id='like-container'>
+				<div id='dislike' class='dislike'  onclick="disliked()"></div>
+				<div id='like' class='like' onclick="liked()"></div>
+			</div>
+			<div id='like-container'>
+				<div id='skip'>Skip ahead to your results >></div>
+			</div>
 
+		</div>
 	</div>
 </div>
-</div>
 
 
 
 
-<!-- display selected location information -->
+<!-- This information is always hidden, but allws us to set the location variables and call them throughout the app -->
 <div class='locationDetails'>
 <h4>Location Details</h4>
 <p>Address: <input type="text" class="search_addr" size="45"></p>
@@ -74,6 +69,7 @@
 </div>
 </div>
 
+<!-- API key is set for just this page, and will not work if hosted elsewhere -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASEMFu4BM15eP3SOlghS9NVBp4yn65_I0&libraries=places&callback=initialize" async defer></script>
 <script type="text/javascript" src='index.js' async defer></script>
 

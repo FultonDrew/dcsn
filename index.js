@@ -1,8 +1,7 @@
-// document.addEventListener('DOMContentLoaded', function() {
+
 var geocoder;
 var map;
 var marker;
-
 var lat;
 var long;
 
@@ -15,27 +14,31 @@ var card = document.getElementById('card');
 var close = document.getElementById('close');
 var skip = document.getElementById('skip');
 
+//information click events for the directions on the homepage
 info.addEventListener('click', information);
 close.addEventListener('click', closeDirections);
 
+//function to display the information block
 function information(){
     directions.style.display = 'block';
     console.log('clicked');
     info.style.display = 'none';
 };
 
+//function to close the directions box
 function closeDirections(){
     directions.style.display = 'none';
     info.style.display = 'block';
 };
 
 
+//function to initialize the geolocation and autocomplete features with Google API
 $(document).ready(function () {
     //load google map
     initialize();
     
     /*
-     * autocomplete location search
+     * autocomplete location search, pulling the address from the location field on teh homepage
      */
     var PostCodeid = '#search_location';
     $(function () {
@@ -46,6 +49,7 @@ $(document).ready(function () {
                 }, function (results, status) {
                     response($.map(results, function (item) {
                         return {
+                            //return the origin latitude and longitude, later used to find points of interest associated with that address
                             label: item.formatted_address,
                             value: item.formatted_address,
                             lat: item.geometry.location.lat(),
@@ -62,16 +66,17 @@ $(document).ready(function () {
                 $('.search_longitude').val(ui.item.lon);
                 long = (ui.item.lon);
                 console.log(long);
+                //sets the latitude and longitude, creates a marker on the map and calls the initialize function to pull locations based on the location
                 var latlng = new google.maps.LatLng(ui.item.lat, ui.item.lon);
                 marker.setPosition(latlng);
                 initialize();
+                //closes the location search bar once a location is set. This is necessary to make this feel like a single-page app
                 closeA();
             }
         });
     });
 });
     
-    //self containg function
     /*
      * Point location on google map
      */
@@ -91,8 +96,6 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-
-    //self containing function
     // Add listener to marker for reverse geocoding
     google.map.event.addListener(marker, 'drag', function () {
         geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
@@ -109,46 +112,49 @@ $(document).ready(function () {
 
 
 
-
-
-
+//called when a user inputs their location and the geocoding works as intended
 function closeA() {
+    //closes the location input container
     document.getElementById('one').style.display = "none";
+    //displays the reccommendations section
     document.getElementById('two').style.display = "block";
+    //closes the subhead below the logo
     document.getElementById('sub').style.display = "none";
+    //sets the logo size smaller for better legibility on the page
     document.getElementById('logo').style.fontSize = "8vw";
     document.getElementById('directions').style.display = "none";
     info.style.display = 'none';
 }
 
 function closeB() {
+    //closes the reccomendations section
     document.getElementById('two').style.display = 'none';
+    //opens the favorites list and displays the map
     document.getElementById('three').style.display = 'grid';
 
 }
 
 
-
-
-
-/*
- * Google Map with marker
- */
+//main function of the app that dynamically returns restaurants one-by-one, creates new pins on a map for selected restaurants and creates the map
 function initialize() {
     var initialLat = $('.search_latitude').val();
     var initialLong = $('.search_longitude').val();
 
 
     var latlng = new google.maps.LatLng(initialLat, initialLong);
+    //parameters necessary for google to create the map
     var options = {
+        //the lower the zoom, the further out it is set. 20 is the highest you can set this, which zooms to the building level
         zoom: 14,
+        //centers the map around the users' location
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
     map = new google.maps.Map(document.getElementById("geomap"), options);
 
-                     infowindow = new google.maps.InfoWindow();
+                    //pulls the places information based on the location, radius and type
+                    infowindow = new google.maps.InfoWindow();
                         var service = new google.maps.places.PlacesService(map);
                         service.nearbySearch({
                           location: latlng,
@@ -158,22 +164,14 @@ function initialize() {
                         }, callback);
                       
 
-                      function callback(results, status) {
+                    //function that pulls the information from the Places request and dynamically creates the tinder-like cards for restaurants
+                    function callback(results, status) {
                         if (status === google.maps.places.PlacesServiceStatus.OK) {
-                          // for (var i = 0; i < results.length; i++) {
                             var counter = 0;
-                               
                             createMarker(results[counter]);
                                 
                             //creates cards based on the results of the search
                             function createCard(){
-                            // var card = document.createElement('div');
-                            // card.style.width = "80%";
-                            // card.style.height = "120px";
-                            // card.style.margin = "0 auto";
-                            // card.style.border = "1px solid";
-                            // document.getElementById('cards').appendChild(card);
-                                
                                 var picture = document.getElementById('picture');
                                     picture.style.backgroundImage = 'url(' +results[counter].icon+')';
                                 var name = document.getElementById('name');                                    
@@ -211,6 +209,7 @@ function initialize() {
                                     like.style.backgroundColor = "rgba(2,173,83,0.7)";
                                     like.style.backgroundRepeat = "no-repeat";
                                     like.style.backgroundPosition = "center";
+                                    //if statement is for mobile responsive
                                     if (window.matchMedia("(max-width: 575px)").matches) {
                                         like.style.width = "12vw"
                                     } else {
@@ -233,6 +232,7 @@ function initialize() {
                                     dislike.style.backgroundColor = "rgba(117,11,13,0.7)";
                                     dislike.style.backgroundRepeat = "no-repeat";
                                     dislike.style.backgroundPosition = "center";
+                                    //if statement is for mobile responsive
                                     if (window.matchMedia("(max-width: 575px)").matches) {
                                         dislike.style.width = "12vw"
                                     } else {
@@ -244,59 +244,49 @@ function initialize() {
                                     createCard();
                                     document.getElementById('like').addEventListener( 'click', upvote);
                                     document.getElementById('dislike').addEventListener( 'click', downvote);
-                                    
-                                    // document.getElementById('like').addEventListener("click", upvote);
-
-
-                                    // function changeDisplay(){
-                                    //     picture.style.backgroundImage = 'url(' +results[counter+1].icon+')';
-                                    //     name.innerHTML = results[counter+1].name;
-                                    //     rating.innerHTML = results[counter+1].rating + " out of 5";
-                                    //     }
-
-                                    console.log(results.length);
-                                    function upvote(){
-                                        interestedPlaces.push(results[counter]);
                                         
+                                    //function called when users 'like' a restaurant
+                                    function upvote(){
+                                        //pushes 'liked' restaurant into array for later use
+                                        interestedPlaces.push(results[counter]);
                                         callback(results[counter]);
                                         createMarker(results[counter]);
+                                        //updates the counter so that we can display the skip ahead button when appropriate
                                         counter += 1;
+                                        //creates the card with the next result
                                         createCard(results[counter]);
-                                        // removeLike();
-                                   // while (counter <= 19) {
-                                   //      recommendations();
-                                   //      console.log('hey')
-                                   //  }; 
+                
+                                    //creates a marker on the map with the location of the 'liked' restaurant
                                        function createNewMarker(result){
                                             marker = new google.maps.Marker({
                                                 map: map,
                                                 position: result[counter].geometry.location
-                                            })
-                                            console.log(position);
-                                        //closes createNewMarker
+                                            })                                            
                                         };
                                         console.log(interestedPlaces);
                                         console.log(counter);
+                                        //if statement displays the 'skip ahead' button for users who do not want to click through each result
                                         if (counter >= 7){
                                         skip.style.display = 'block'
                                         };
+                                        //if statement that will display the results when you get to the penultimate result
                                         if (counter == (results.length-1)){
                                                 showRec();
                                         };
-
-                                    //closes upvote    
                                     }
 
-                                    //self contained
+                                    //function that called when the 'dislike' button is clicked
                                     function downvote(){
                                         counter += 1;                                        
                                         callback(results[counter]);
                                         createCard(results[counter]);
+                                        //if statement displays the 'skip ahead' button for users who do not want to click through each result
                                         console.log('hello')
                                         // removeDislike();
                                         if (counter >= 7){
                                         skip.style.display = 'block'
                                         };
+                                        //if statement that will display the results when you get to the penultimate result
                                         if (counter == (results.length-1)){
                                                 showRec();
                                         };
@@ -306,10 +296,11 @@ function initialize() {
                                         recommendations();
                                                 closeB();
                                     };
-
-                                   
                                     skip.addEventListener( 'click', showRec);
 
+
+                                    //called above when the user either clicks the 'skip ahead' button or reaches the end of the API result list
+                                    //this function dynamically creates the full list of places that were liked by a user
                                     function recommendations(){
                                         for (var i = 0; i < interestedPlaces.length; i++) {
                                         var card = document.createElement('div');
@@ -324,21 +315,13 @@ function initialize() {
                                         card.style.overflow = 'scroll';
                                         card.style.backgroundColor = "rgba(241,240,238,0.8)";
                                         document.getElementById('interestedPlaces').appendChild(card);
+                                        //if statement for mobile responsive
                                         if (window.matchMedia("(max-width: 575px)").matches) {
                                           card.style.width = '35vw';
                                           card.style.margin = "8px";
                                         } else {
                                           card.style.width = '25vw'
                                         }
-                                            var picture = document.createElement('div');
-                                            picture.id = "reccoPicture";
-                                            picture.style.width = "30%";
-                                            picture.style.margin = "10px auto";
-                                            picture.style.height = "30%";
-                                            // picture.style.border = "1px solid yellow";
-                                            picture.style.backgroundSize = "100% 100%";
-                                            picture.style.backgroundImage =  'url(' +interestedPlaces[i].icon+')';
-                                            // card.appendChild(picture);
                                             var name = document.createElement('div');
                                             name.id = "reccoName";
                                             name.style.width = "98%";                                            
@@ -350,6 +333,7 @@ function initialize() {
                                             name.style.fontFamily = "'Lato', sans-serif";
                                             name.innerHTML = interestedPlaces[i].name;
                                             document.getElementById('line').appendChild(name);
+                                            //if statement for mobile responsive
                                             if (window.matchMedia("(max-width: 575px)").matches) {
                                               name.style.fontSize = '0.85em'
                                             } else {
@@ -367,6 +351,7 @@ function initialize() {
                                             rating.style.fontFamily = "'Lato', sans-serif";
                                             rating.innerHTML = "Rating: " + interestedPlaces[i].rating + " out of 5";
                                             card.appendChild(rating);
+                                            //if statement for mobile responsive
                                             if (window.matchMedia("(max-width: 575px)").matches) {
                                               rating.style.fontSize = '0.75em'
                                             } else {
@@ -391,6 +376,7 @@ function initialize() {
                                                     price.innerHTML = "Price: "+"$$$$";
                                                 }
                                             card.appendChild(price);
+                                            //if statement for mobile responsive
                                             if (window.matchMedia("(max-width: 575px)").matches) {
                                               price.style.fontSize = '0.75em'
                                             } else {
@@ -414,6 +400,7 @@ function initialize() {
                                                 open.innerHTML =  "Closed";
                                             }
                                             card.appendChild(open);
+                                            //if statement for mobile responsive
                                             if (window.matchMedia("(max-width: 575px)").matches) {
                                               open.style.fontSize = '0.75em'
                                             } else {
@@ -431,9 +418,11 @@ function initialize() {
                                             directions.style.textAlign = "center";
                                             directions.style.fontSize = '1.3em';
                                             directions.style.fontFamily = "'Lato', sans-serif";
+                                            //directions link is created dynamically to direct from users origin to specific destination                                                                           
                                             directions.innerHTML = '<a href="https://www.google.com/maps/dir/?api=1&origin='+lat+","+long+"&destination="+interestedPlaces[i].geometry.viewport.ma.j+","+interestedPlaces[i].geometry.viewport.fa.j+"&destination_place_id="+interestedPlaces[i].place_id+'">Get Directions</a>';
                                             directions.style.textDecoration = 'none';
                                             card.appendChild(directions);
+                                            //if statement for mobile responsive
                                             if (window.matchMedia("(max-width: 575px)").matches) {
                                               directions.style.width = "40%";
                                               directions.style.fontSize = '0.8em'
@@ -441,13 +430,9 @@ function initialize() {
                                               directions.style.fontSize = '1.3em'
                                               directions.style.width = "50%";
                                             }
-                                            
-                                        //closes for loop
-                                        }
-                                    //closes reccomendations
+                                        }                                    
                                     }
                           }
-
                         console.log(results)
                         
 
@@ -466,17 +451,15 @@ function initialize() {
                           infowindow.open(map, this);
                         });
                       }
-                      //no match after
-                  
               }
     
-//self contained
+    //creates a new marker that is draggable when users first input their location
     marker = new google.maps.Marker({
         map: map,
         draggable: true,
         position: latlng
     });
-//self contained
+
     google.maps.event.addListener(marker, "dragend", function () {
         var point = marker.getPosition();
         map.panTo(point);
@@ -491,15 +474,10 @@ function initialize() {
         });
     });
     geocoder = new google.maps.Geocoder();
-//no match
 }
-//no open
-
-// });
 
 
-
-
+//function for the tinder-like animation when users click the thumbs-up button
    function liked(){
     console.log("current status " + card.className)
     if (card.className == 'default'){
@@ -516,9 +494,9 @@ function initialize() {
         card.className = 'but-yay'
         console.log(card.className)
     }
+  };
 
-  }
-
+//function for the tinder-like animation when users click the thumbs-down button
   function disliked(){
     if (card.className == 'default'){
         card.className = 'but-nope';
@@ -527,54 +505,5 @@ function initialize() {
         }, 500)
     }else {
         card.className = 'default'
-    }
-    
-  }
-
-
-
-
-//old code for map features
-
-
-// //get places
-//  var map;
-//  var infowindow;
-
-//       function initMap() {
-//         var pyrmont = {lat: 39.9525839, lng: -75.16522150000003};
-
-//         map = new google.maps.Map(document.getElementById('map'), {
-//           center: pyrmont,
-//           zoom: 15
-//         });
-
-//         infowindow = new google.maps.InfoWindow();
-//         var service = new google.maps.places.PlacesService(map);
-//         service.nearbySearch({
-//           location: pyrmont,
-//           radius: 500,
-//           type: ['store']
-//         }, callback);
-//       }
-
-//       function callback(results, status) {
-//         if (status === google.maps.places.PlacesServiceStatus.OK) {
-//           for (var i = 0; i < results.length; i++) {
-//             createMarker(results[i]);
-//           }
-//         }
-//       }
-
-//       function createMarker(place) {
-//         var placeLoc = place.geometry.location;
-//         var marker = new google.maps.Marker({
-//           map: map,
-//           position: place.geometry.location
-//         });
-
-//         google.maps.event.addListener(marker, 'click', function() {
-//           infowindow.setContent(place.name);
-//           infowindow.open(map, this);
-//         });
-//       }
+    } 
+  };
