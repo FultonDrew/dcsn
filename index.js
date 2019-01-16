@@ -419,7 +419,7 @@ function initialize() {
                                             directions.style.fontSize = '1.3em';
                                             directions.style.fontFamily = "'Lato', sans-serif";
                                             //directions link is created dynamically to direct from users origin to specific destination                                                                           
-                                            directions.innerHTML = '<a href="https://www.google.com/maps/dir/?api=1&origin='+lat+","+long+"&destination="+interestedPlaces[i].geometry.viewport.ma.j+","+interestedPlaces[i].geometry.viewport.fa.j+"&destination_place_id="+interestedPlaces[i].place_id+'">Get Directions</a>';
+                                            directions.innerHTML = '<a href="https://www.google.com/maps/dir/?api=1&origin='+lat+","+long+"&destination="+interestedPlaces[i].geometry.viewport.ma.j+","+interestedPlaces[i].geometry.viewport.ga.j+"&destination_place_id="+interestedPlaces[i].place_id+'">Get Directions</a>';
                                             directions.style.textDecoration = 'none';
                                             card.appendChild(directions);
                                             //if statement for mobile responsive
@@ -479,7 +479,7 @@ function initialize() {
 
 //function for the tinder-like animation when users click the thumbs-up button
    function liked(){
-    console.log("current status " + card.className)
+    // console.log("current status " + card.className)
     if (card.className == 'default'){
         card.className = 'but-yay'
         setTimeout(function(){
