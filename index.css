@@ -294,12 +294,12 @@ form.search input[type=text] {
 
 
 .but-yay {
-  -webkit-animation: yay 0.3s ease-out;
-  animation: yay 0.3s ease-out;
+  -webkit-animation: yay 0.8s ease-out;
+  animation: yay 0.8s ease-out;
 }
 .but-nope {
-  -webkit-animation: nope 0.3s ease-out;
-  animation: nope 0.3s ease-out;
+  -webkit-animation: nope 0.8s ease-out;
+  animation: nope 0.8s ease-out;
 }
 
 /*animation for the pulsing of the like/dislike buttons for UX*/
