@@ -306,19 +306,23 @@ function initialize() {
                                         var card = document.createElement('div');
                                         card.id = "reccoCard";
                                         card.style.width = "25vw";                                        
-                                        card.style.height = "28vh";                                        
+                                        card.style.height = "33vh";                                        
                                         card.style.display = "inline-block";
-                                        card.style.margin = "15px";
+                                        card.style.margin = "20px";
                                         card.style.border = "1px solid white";
                                         card.style.borderRadius = '5px';
                                         card.style.textAlign = 'center';
                                         card.style.overflow = 'scroll';
                                         card.style.backgroundColor = "rgba(241,240,238,0.8)";
+                                        card.style.boxShadow = "0 48px 76px rgba(0,0,0,0.30), 0 30px 24px rgba(0,0,0,0.22)";
                                         document.getElementById('interestedPlaces').appendChild(card);
                                         //if statement for mobile responsive
                                         if (window.matchMedia("(max-width: 575px)").matches) {
-                                          card.style.width = '35vw';
-                                          card.style.margin = "8px";
+                                          card.style.width = '97%';
+                                          card.style.maxHeight = "100px";
+                                          card.style.display = "grid";
+                                          card.style.gridTemplateColumns = "2fr 1fr 1fr 1fr 2fr";
+                                          card.style.margin = "9px auto";
                                         } else {
                                           card.style.width = '25vw'
                                         }
@@ -326,7 +330,7 @@ function initialize() {
                                             name.id = "reccoName";
                                             name.style.width = "98%";                                            
                                             name.style.margin = "25px auto";
-                                            name.style.color = '#F27E1D';
+                                            name.style.color = '#707070';
                                             // name.style.border = "1px solid white";
                                             name.style.textAlign = "center";
                                             name.style.fontSize = "1.75em";
@@ -335,7 +339,15 @@ function initialize() {
                                             document.getElementById('line').appendChild(name);
                                             //if statement for mobile responsive
                                             if (window.matchMedia("(max-width: 575px)").matches) {
-                                              name.style.fontSize = '0.85em'
+                                              name.style.fontSize = '1.2em'
+                                              name.style.gridColumn = "1/2"
+                                              name.style.width = "90%";
+                                              name.style.margin = "5% 2%";
+                                              name.style.display = "flex";
+                                              name.style.alignItems = "center";
+                                              name.style.justifyContent = "center";
+                                              name.style.flexDirection = "column";
+                                              name.style.textAlign = "center";                                              
                                             } else {
                                               name.style.fontSize = '1.75em'
                                             }
@@ -343,7 +355,7 @@ function initialize() {
                                             var rating = document.createElement('div');
                                             rating.id = "reccoRating";
                                             rating.style.width = "70%";
-                                            rating.style.color = 'white';                                            
+                                            rating.style.color = '#015073';                                            
                                             rating.style.margin = "10px auto";
                                             // rating.style.border = "1px solid";
                                             rating.style.textAlign = "center";
@@ -353,14 +365,22 @@ function initialize() {
                                             card.appendChild(rating);
                                             //if statement for mobile responsive
                                             if (window.matchMedia("(max-width: 575px)").matches) {
-                                              rating.style.fontSize = '0.75em'
+                                              rating.style.fontSize = '0.80em';
+                                              rating.style.gridColumn = "2/3";
+                                              rating.style.width = "90%";
+                                              rating.style.margin = "5% 0";
+                                              rating.style.display = "flex";
+                                              rating.style.alignItems = "center";
+                                              rating.style.justifyContent = "center";
+                                              rating.style.flexDirection = "column";
+                                              rating.style.textAlign = "center";
                                             } else {
                                               rating.style.fontSize = '1.2em'
                                             }
                                             var price = document.createElement('div');
                                             price.id = 'reccoPrice';
                                             price.style.width = "70%";
-                                            price.style.color = 'white';                                            
+                                            price.style.color = '#015073';                                            
                                             price.style.margin = "10px auto";
                                             // price.style.border = "1px solid";
                                             price.style.textAlign = "center";
@@ -378,9 +398,17 @@ function initialize() {
                                             card.appendChild(price);
                                             //if statement for mobile responsive
                                             if (window.matchMedia("(max-width: 575px)").matches) {
-                                              price.style.fontSize = '0.75em'
-                                            } else {
-                                              price.style.fontSize = '1.2em'
+                                              price.style.fontSize = '0.9em';
+                                              price.style.gridColumn = "3/4"
+                                              price.style.width = "90%";
+                                              price.style.margin = "5% 0";
+                                              price.style.display = "flex";
+                                              price.style.alignItems = "center";
+                                              price.style.justifyContent = "center";
+                                              price.style.flexDirection = "column";
+                                              price.style.textAlign = "center";
+                                                } else {
+                                                    price.style.fontSize = '1.2em'
                                             }
                                             var open = document.createElement('div');
                                             open.id = 'reccoOpen';
@@ -402,30 +430,45 @@ function initialize() {
                                             card.appendChild(open);
                                             //if statement for mobile responsive
                                             if (window.matchMedia("(max-width: 575px)").matches) {
-                                              open.style.fontSize = '0.75em'
+                                              open.style.fontSize = '0.9em'
+                                              open.style.gridColumn = "4/5"
+                                              open.style.width = "90%";
+                                              open.style.margin = "5% 0";
+                                              open.style.display = "flex";
+                                              open.style.alignItems = "center";
+                                              open.style.justifyContent = "center";
+                                              open.style.flexDirection = "column";
+                                              open.style.textAlign = "center";
                                             } else {
                                               open.style.fontSize = '1.2em'
                                             }
                                             var directions = document.createElement('div');
                                             directions.id = 'reccoDirections';
-                                            directions.style.width = "50%";
+                                            directions.style.width = "auto";
                                             directions.style.color = 'white';
-                                            directions.style.backgroundColor = '#04C3D9';
+                                            directions.style.backgroundColor = '#015073';
                                             directions.style.margin = "10px auto";
                                             directions.style.border = "1px solid";
-                                            directions.style.padding = "15px";
-                                            directions.style.borderRadius = "5px";
+                                            directions.style.padding = "8px";
+                                            directions.style.borderRadius = "26px";
                                             directions.style.textAlign = "center";
                                             directions.style.fontSize = '1.3em';
                                             directions.style.fontFamily = "'Lato', sans-serif";
                                             //directions link is created dynamically to direct from users origin to specific destination                                                                           
-                                            directions.innerHTML = '<a href="https://www.google.com/maps/dir/?api=1&origin='+lat+","+long+"&destination="+interestedPlaces[i].geometry.viewport.ma.j+","+interestedPlaces[i].geometry.viewport.ga.j+"&destination_place_id="+interestedPlaces[i].place_id+'">Get Directions</a>';
-                                            directions.style.textDecoration = 'none';
+                                            directions.innerHTML = '<a href="https://www.google.com/maps/dir/?api=1&origin='+lat+","+long+"&destination="+interestedPlaces[i].geometry.viewport.ma.j+","+interestedPlaces[i].geometry.viewport.ga.j+"&destination_place_id="+interestedPlaces[i].place_id+'" style="text-decoration:none; color:white">Directions</a>';
                                             card.appendChild(directions);
                                             //if statement for mobile responsive
                                             if (window.matchMedia("(max-width: 575px)").matches) {
-                                              directions.style.width = "40%";
-                                              directions.style.fontSize = '0.8em'
+                                              directions.style.width = "55%";
+                                              directions.style.fontSize = '0.8em';
+                                              directions.style.gridColumn = "5/6";
+                                              directions.style.display = "flex";
+                                              directions.style.alignItems = "center";
+                                              directions.style.justifyContent = "center";
+                                              directions.style.margin = "35% 0 0 10%";
+                                              directions.style.flexDirection = "column";
+                                              directions.style.textAlign = "center";
+                                              directions.style.height = "20px";
                                             } else {
                                               directions.style.fontSize = '1.3em'
                                               directions.style.width = "50%";
