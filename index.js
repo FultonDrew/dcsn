@@ -131,6 +131,7 @@ function closeB() {
     document.getElementById('two').style.display = 'none';
     //opens the favorites list and displays the map
     document.getElementById('three').style.display = 'grid';
+    document.getElementById('logo').style.fontSize = "5vw";
 
 }
 
@@ -398,7 +399,7 @@ function initialize() {
                                             card.appendChild(price);
                                             //if statement for mobile responsive
                                             if (window.matchMedia("(max-width: 575px)").matches) {
-                                              price.style.fontSize = '0.9em';
+                                              price.style.fontSize = '0.85em';
                                               price.style.gridColumn = "3/4"
                                               price.style.width = "90%";
                                               price.style.margin = "5% 0";
@@ -430,7 +431,7 @@ function initialize() {
                                             card.appendChild(open);
                                             //if statement for mobile responsive
                                             if (window.matchMedia("(max-width: 575px)").matches) {
-                                              open.style.fontSize = '0.9em'
+                                              open.style.fontSize = '0.85em'
                                               open.style.gridColumn = "4/5"
                                               open.style.width = "90%";
                                               open.style.margin = "5% 0";
@@ -444,7 +445,7 @@ function initialize() {
                                             }
                                             var directions = document.createElement('div');
                                             directions.id = 'reccoDirections';
-                                            directions.style.width = "auto";
+                                            directions.style.width = "3vw";
                                             directions.style.color = 'white';
                                             directions.style.backgroundColor = '#015073';
                                             directions.style.margin = "10px auto";
@@ -465,7 +466,7 @@ function initialize() {
                                               directions.style.display = "flex";
                                               directions.style.alignItems = "center";
                                               directions.style.justifyContent = "center";
-                                              directions.style.margin = "35% 0 0 10%";
+                                              directions.style.margin = "30% 0 0 15%";
                                               directions.style.flexDirection = "column";
                                               directions.style.textAlign = "center";
                                               directions.style.height = "20px";
