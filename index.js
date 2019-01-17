@@ -131,7 +131,7 @@ function closeB() {
     document.getElementById('two').style.display = 'none';
     //opens the favorites list and displays the map
     document.getElementById('three').style.display = 'grid';
-    document.getElementById('logo').style.fontSize = "5vw";
+    document.getElementById('logo').style.fontSize = "6vw";
 
 }
 

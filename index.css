@@ -169,6 +169,7 @@ body{
   margin: 0 auto;
   display: inline-block;
   grid-row: 2/3;
+  padding-left: 4%;
   /*border: 1px solid red;*/
   overflow: scroll;
 }
@@ -204,11 +205,17 @@ body{
   width: 50%;
   color: white;
   text-align: center;
+  cursor: pointer;
   font-size: 11vw;
   font-family: 'Lobster', cursive;
   text-shadow: -10px 10px 0px #00e6e6,
                  -20px 20px 0px #01cccc,
                  -30px 30px 0px #00bdbd;
+ }
+
+ .logo a {
+  text-decoration: none;
+  color: white;
  }
 
 /*subhead seen on homepage*/
@@ -351,10 +358,11 @@ form.search input[type=text] {
   #interestedPlaces {
     width: 100%;
     margin: 0 auto;
+    padding-left: 0;
   }
 
   #directions-btn {
-    width: 9vw;
+    width: 12vw;
     height: 7vh;
   }
 
@@ -365,6 +373,11 @@ form.search input[type=text] {
     color: #007A7A;
     font-size: 3.25vw;
     padding: 3px;
+  }
+
+  #close {
+    width: 4vw;
+    height: 4vh;
   }
 
   #cards {
