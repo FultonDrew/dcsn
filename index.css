@@ -270,7 +270,7 @@ form.search input[type=text] {
      height: 8vh;
      margin: 10% 50% 10% 0;
      background: rgba(255,255,255,0.7);
-     border-radius: 5px;
+     border-radius: 36px;
      box-shadow: 0 48px 76px rgba(0,0,0,0.30), 0 30px 24px rgba(0,0,0,0.22);
 }
 
