@@ -185,6 +185,7 @@ body{
 .two {
   display: none;
   width: 100%;
+  min-height: 60vh;
 }
 
 /*three displays the map and all 'liked' restaurants*/
@@ -254,11 +255,11 @@ body{
 }
 
 .form-control {
-  color: #007A7A;
+  color: #015073;
 }
 
 .ui-autocomplete-input {
-  color: #007A7A;
+  color: #015073;
 }
 
 /*input field*/
@@ -273,6 +274,21 @@ form.search input[type=text] {
      border-radius: 36px;
      box-shadow: 0 48px 76px rgba(0,0,0,0.30), 0 30px 24px rgba(0,0,0,0.22);
 }
+
+.ui-autocomplete-input:focus:active {
+    background-image: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.ui-autocomplete-input {
+  color: #015073;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+}
+
+
 
 .ui-menu-item{
   background: rgba(255,255,255,0.7);
@@ -381,7 +397,12 @@ form.search input[type=text] {
   }
 
   #cards {
-    width: 90%;
+    width: 80%;
+    min-height: 60vh;
+  }
+
+  #card {
+    min-height: 60vh;
   }
 
   #skip {
@@ -401,6 +422,7 @@ form.search input[type=text] {
 
    #reccoCard {
     width: 55vw;
+    /*min-height: 60vh;*/
    }
 
    #reccoName {
