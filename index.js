@@ -456,7 +456,7 @@ function initialize() {
                                             directions.style.fontSize = '1.3em';
                                             directions.style.fontFamily = "'Lato', sans-serif";
                                             //directions link is created dynamically to direct from users origin to specific destination                                                                           
-                                            directions.innerHTML = '<a href="https://www.google.com/maps/dir/?api=1&origin='+lat+","+long+"&destination="+interestedPlaces[i].geometry.viewport.ga.j+","+interestedPlaces[i].geometry.viewport.na.j+"&destination_place_id="+interestedPlaces[i].place_id+'" style="text-decoration:none; color:white">Directions</a>';
+                                            directions.innerHTML = '<a href="https://www.google.com/maps/dir/?api=1&origin='+lat+","+long+"&destination="+interestedPlaces[i].geometry.viewport.da.g+","+interestedPlaces[i].geometry.viewport.ha.g+"&destination_place_id="+interestedPlaces[i].place_id+'" style="text-decoration:none; color:white">Directions</a>';
                                             card.appendChild(directions);
                                             //if statement for mobile responsive
                                             if (window.matchMedia("(max-width: 575px)").matches) {
