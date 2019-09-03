@@ -313,7 +313,7 @@ function initialize() {
                                         card.style.border = "1px solid white";
                                         card.style.borderRadius = '5px';
                                         card.style.textAlign = 'center';
-                                        card.style.overflow = 'scroll';
+//                                         card.style.overflow = 'scroll';
                                         card.style.backgroundColor = "rgba(241,240,238,0.8)";
                                         card.style.boxShadow = "0 48px 76px rgba(0,0,0,0.30), 0 30px 24px rgba(0,0,0,0.22)";
                                         document.getElementById('interestedPlaces').appendChild(card);
