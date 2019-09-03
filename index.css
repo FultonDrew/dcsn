@@ -171,7 +171,7 @@ body{
   grid-row: 2/3;
   padding-left: 4%;
   /*border: 1px solid red;*/
-  overflow: scroll;
+/*   overflow: scroll; */
 }
 
 /*blocks set to display in JS*/
